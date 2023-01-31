@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+    <head>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
+        rel="stylesheet"
+    />
+    </head>
+<div class="p-4 bg-light">
+    <div class="container-fluid py-5">
+      <h1 class="display-5 fw-bold">Welcome to DataFlair Library Manage System</h1>
+      <p class="col-md-4 fs-4">You can register as a student. You will be able to issue any book through the admin.
+        After that you need to return the book within 14 days or else a fine of Rs 5 will be charged per day till the book it returned.
+      </p>
+      <button class="btn btn-primary btn-lg" type="button">Register as student</button>
+    </div>
+    
+    <div class="container">
+  
+    <div class="row">
+ 
+        <div class="col-lg-6">
+        <img src="{% static 'woman-avatar.jpg' %}" width="20%" height="20%" alt=""><br><br>
+            <a class="btn btn-outline-primary btn-lg" style="text-align:center" href="/admin_login/">Admin</a>
+        </div>
+    
+        <div class="col-lg-6">
+        <img src="{% static 'student.png' %}" width="20%" height="20%" alt=""><br><br>
+            <a class="btn btn-outline-primary btn-lg" href="/student_login/">Student</a>
+        </div>
+    </div>
+
+    </div>
+</div>
+</html>
