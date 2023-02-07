@@ -1,0 +1,147 @@
+{% extends 'basic.html' %}
+{% load static %}
+{% block title %} Library Management System {% endblock %}
+{% block body %}
+
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}" />
+    </head>
+
+    <section class="vh-100 gradient-custom p-4 bg-light">
+        <div class="container py-5 h-100">
+        <div class="row justify-content-center align-items-center h-100">
+            <div class="col-12 col-lg-9 col-xl-7">
+            <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+                <div class="card-body p-4 p-md-5">
+                <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Student Registration</h3>
+                <form method="post" enctype="multipart/form-data" action="/register_data/">
+                {% csrf_token %}
+
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <div class="form-outline">
+                        <label class="form-label" for="name">Name</label>
+                        <input type="text" id="name" name="name" class="form-control form-control-lg" required/>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mb-4">
+                        <div class="form-outline">
+                        <label class="form-label" for="roll_no">Roll No</label>
+                        <input type="text" id="roll_no" name="roll_no" class="form-control form-control-lg" required/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-4 d-flex align-items-center">
+                        <div class="form-outline datepicker w-100">
+                        <label for="birthdayDate" class="form-label">Birthday</label>
+                        <input type="date" class="form-control form-control-lg" id="birthdayDate" name="birthdayDate" required/>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <h6 class="mb-2 pb-1">Gender: </h6>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="gender" id="femaleGender"
+                                value="female" checked />
+                            <label class="form-check-label" for="femaleGender" >Female</label>
+                        </div>
+    
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="gender" id="maleGender"
+                                value="male" />
+                            <label class="form-check-label" for="maleGender" >Male</label>
+                        </div>
+    
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="gender" id="otherGender"
+                            value="other" />
+                            <label class="form-check-label" for="otherGender" >Other</label>
+                        </div>
+    
+                    </div>
+                </div>
+    
+                <div class="row">
+                    <div class="col-md-6 mb-4 pb-2">
+                        <div class="form-outline">
+                            <label class="form-label" for="emailAddress">Email</label>
+                            <input type="email" id="emailAddress" name="emailAddress" class="form-control form-control-lg" required/>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4 pb-2">
+                        <div class="form-outline">
+                            <label class="form-label" for="phoneNumber">Phone Number</label>
+                            <input type="tel" id="phoneNumber" name="phone" class="form-control form-control-lg" required/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-4 pb-2">
+                        <div class="form-outline">
+                            <label class="form-label" for="password">Password</label>
+                            <input type="password" id="password" name="password" class="form-control form-control-lg" required/>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4 pb-2">
+                        <div class="form-outline">
+                            <label class="form-label" for="confirm_password">Confirm password</label>
+                            <input type="password" id="confirm_password" name="confirm_password" class="form-control form-control-lg" required/>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="row">
+                    <div class="col-12">
+                        <label class="form-label select-label">Choose subject</label>
+
+                        <select class="select form-control-lg" name="subject">
+                        <option value="1" disabled>Choose option</option>
+                        <option value="2">Computer Science</option>
+                        <option value="3">Civil</option>
+                        <option value="4">Electronics and communications</option>
+                        </select>
+    
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-outline">
+                        <label class="form-label" for="profile_image">Profile Image</label>
+                        <input type="file" id="profile_image" name="profile_image" class="form-control form-control-lg" required/>
+                    </div>
+                </div>
+    
+                <div class="mt-4 pt-2">
+                    <input class="btn btn-primary btn-lg" type="submit" value="Submit" />
+                </div>
+    
+                </form>
+
+                {% if messages %}
+                {% for message in messages %}               
+                    <div class=" alert-{{message.tags}} alert-dismissible fade show" role="alert">
+                    <strong>Message: </strong> {{message}}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+                {% endif %}
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+    </section>
+  </html>
+  {% endblock %}
+
+  {% block js %}
+<script>
+    {% if alert %}
+    alert("Registration Successfull.")
+    document.location = "/student_login"
+    {% endif %}
+</script>
+{% endblock %}
